@@ -53,11 +53,14 @@ public class MyTextView extends TextView {
                 getMeasuredWidth() - 10,
                 getMeasuredHeight() - 10,
                 mPaint2);
+        //锁画布(为了保存之前的画布状态)
         canvas.save();
         // 绘制文字前平移10像素
+        //把当前画布的原点移到(10,0),后面的操作都以(10,0)作为参照点，默认原点为(0,0)
         canvas.translate(10, 0);
         // 父类完成的方法，即绘制文本
         super.onDraw(canvas);
+        //把当前画布返回（调整）到上一个save()状态之前
         canvas.restore();
     }
 }
